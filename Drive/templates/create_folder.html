@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Folder</title>
+</head>
+<body>
+    <h1>Create Folder</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Folder</button>
+    </form>
+
+    {% if parent_folder %}
+        <a href="{% url 'folder_detail' parent_folder.id %}">Back to {{ parent_folder.name }}</a>
+    {% else %}
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+    {% endif %}
+</body>
+</html>
